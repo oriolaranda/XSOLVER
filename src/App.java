@@ -86,7 +86,7 @@ public class App extends JFrame {
                 webcam.close();
                 ImageIcon icon = new ImageIcon("pic.png");
                 icon.getImage().flush();
-                view01.getViewImg().setIcon(icon);
+                view02.getViewImg().setIcon(icon);
                 System.out.println(icon);
 
             }
@@ -118,7 +118,7 @@ public class App extends JFrame {
 
         ImageIcon icon = new ImageIcon(filename);
         icon.getImage().flush();
-        view02.getViewImg().setIcon(icon);
+        view01.getViewImg().setIcon(icon);
         System.out.println(icon);
 
     }
