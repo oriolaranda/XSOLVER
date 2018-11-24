@@ -73,7 +73,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/wolfram-alpha-java-binding-master/WolframAlpha-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/WolframAlpha-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
