@@ -11,10 +11,12 @@
       <component id="7df68" class="javax.swing.JTextArea" binding="viewSolution">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
+            <preferred-size width="150" height="80"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="24"/>
+        </properties>
       </component>
       <component id="fa2ed" class="javax.swing.JButton" binding="solve">
         <constraints>

@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class App extends JFrame {
@@ -22,6 +21,7 @@ public class App extends JFrame {
     private JTextField uploadText;
     private JButton photo;
     private JComboBox<Webcam> camsSelect;
+    private View0 view02;
     private View0 view01;
 
 
@@ -84,11 +84,6 @@ public class App extends JFrame {
                     e1.printStackTrace();
                 }
                 webcam.close();
-                try {
-                    TimeUnit.SECONDS.sleep(4);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
                 ImageIcon icon = new ImageIcon("pic.png");
                 icon.getImage().flush();
                 view01.getViewImg().setIcon(icon);
@@ -120,9 +115,10 @@ public class App extends JFrame {
         if (f == null) return;
 
         uploadText.setText(filename);
-        ImageIcon icon = new ImageIcon("pic.png");
+
+        ImageIcon icon = new ImageIcon(filename);
         icon.getImage().flush();
-        view01.getViewImg().setIcon(icon);
+        view02.getViewImg().setIcon(icon);
         System.out.println(icon);
 
     }

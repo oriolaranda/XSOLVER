@@ -9,9 +9,9 @@ import com.wolfram.alpha.WASubpod;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public String calculateResult(String input) {
 
-        String input = "3+2x = 4x"; //aqui escribim el input corresponent.
+         //aqui escribim el input corresponent.
         if (args.length > 0)
             input = args[0];
 
@@ -46,16 +46,16 @@ public class Main {
                                 }
                             }
                         }
-                        System.out.println(result);
+                        return result;
                     }
                 }
 
             }
 
-        } catch (WAException e) {
+        } catch (WAExcepti<on e) {
             e.printStackTrace();
         }
-
+        return "error";
     }
 
 }
