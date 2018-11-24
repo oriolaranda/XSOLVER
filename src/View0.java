@@ -5,8 +5,6 @@ import java.io.File;
 
 public class View0 extends JPanel {
     private JPanel bottom;
-    private JTextField uploadText;
-    private JLabel preImg;
     private JTextArea viewSolution;
     private JButton solve;
     private JLabel viewImg;

@@ -7,6 +7,7 @@ public class Main {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         App app = new App();
         app.setVisible(true);
+        app.setResizable(false);
 
     }
 }
