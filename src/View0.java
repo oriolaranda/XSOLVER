@@ -33,12 +33,6 @@ public class View0 extends JPanel {
         viewSolution.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         viewSolution.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED), new BevelBorder(BevelBorder.LOWERED)));
         solve.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        solve.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resoldre();
-            }
-        });
         clipboard.setCursor(new Cursor(Cursor.HAND_CURSOR));
         clipboard.addActionListener(new ActionListener() {
             @Override
@@ -59,8 +53,11 @@ public class View0 extends JPanel {
         return viewImg;
     }
 
-    private void resoldre() {
-        String equacio = "2x+4=0";
+    public JButton getSolve() {
+        return solve;
+    }
+
+    public void resoldre(String equacio) {
 
         String solucio = calculateResult(equacio);//solucio
         if (!solucio.equals("error")) viewSolution.setText(equacio + "  =>  " + solucio);

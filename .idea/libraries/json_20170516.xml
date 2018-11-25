@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="json-20170516">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="jar://$PROJECT_DIR$/lib/json-20170516.jar!/" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

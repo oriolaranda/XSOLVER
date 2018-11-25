@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 import java.net.URI;
@@ -57,9 +58,26 @@ public class App extends JFrame {
         setSize(900, 700);
         tab1();
         tab2();
-
+        view01.getSolve().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String url = uploadImgur();
+                String s = imageToString(url);
+                view01.resoldre(s);
+            }
+        });
+        view02.getSolve().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String url = uploadImgur();
+                view02.resoldre(imageToString(url));
+            }
+        });
     }
 
+    private String uploadImgur(){
+
+    }
 
     private void tab1() {
         uploadText.setBounds(720,40,0,0);
@@ -152,7 +170,6 @@ public class App extends JFrame {
 
 
 
-    public class aux2 {
         // **********************************************
         // *** Update or verify the following values. ***
         // **********************************************
@@ -171,14 +188,11 @@ public class App extends JFrame {
         private static final String uriBase =
                 "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
-        private static final String imageToAnalyze =
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                        "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
 
-        private void imageToString() {
+        private String imageToString(String url) {
             CloseableHttpClient httpTextClient = HttpClientBuilder.create().build();
             CloseableHttpClient httpResultClient = HttpClientBuilder.create().build();;
-
+            final String imageToAnalyze = url;
             try {
                 // This operation requires two REST API calls. One to submit the image
                 // for processing, the other to retrieve the text found in the image.
@@ -216,7 +230,7 @@ public class App extends JFrame {
                     JSONObject json = new JSONObject(jsonString);
                     System.out.println("Error:\n");
                     System.out.println(json.toString(2));
-                    return;
+                    return "error";
                 }
 
                 // Store the URI of the second REST API method.
@@ -268,5 +282,6 @@ public class App extends JFrame {
                 System.out.println(e.getMessage());
             }
         }
+
     }
-}
+
