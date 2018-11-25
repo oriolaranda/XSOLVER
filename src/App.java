@@ -46,8 +46,8 @@ public class App extends JFrame {
     private JComboBox<Webcam> camsSelect;
     private View0 view01;
     private View0 view02;
-
-
+    private String img1 = null;
+    private String img2 = null;
 
     private ImageIcon icon;
     private Webcam webcam;
@@ -61,7 +61,8 @@ public class App extends JFrame {
         view01.getSolve().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = uploadImgur();
+                String url = uploadImgur(img1);
+                System.out.println(url);
                 String s = imageToString(url);
                 view01.resoldre(s);
             }
@@ -69,15 +70,19 @@ public class App extends JFrame {
         view02.getSolve().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = uploadImgur();
+                String url = uploadImgur(img2);
+                System.out.println(url);
                 view02.resoldre(imageToString(url));
             }
         });
     }
 
-    private String uploadImgur(){
-
+    private String uploadImgur(String img){
+        if (img.equals(null)) return null;
+        return Uploader.upload(new File(img));
     }
+
+
 
     private void tab1() {
         uploadText.setBounds(720,40,0,0);
@@ -124,6 +129,7 @@ public class App extends JFrame {
                 BufferedImage image = webcam.getImage();
                 try {
                     ImageIO.write(image, "PNG", new File("pic.png"));
+                    img2 = "pic.png";
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -159,7 +165,7 @@ public class App extends JFrame {
         if (f == null) return;
 
         uploadText.setText(filename);
-
+        img1 = filename;
         ImageIcon icon = new ImageIcon(filename);
         icon.getImage().flush();
         view01.getViewImg().setIcon(icon);
@@ -281,6 +287,7 @@ public class App extends JFrame {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            return null;
         }
 
     }
