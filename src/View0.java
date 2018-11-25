@@ -1,4 +1,11 @@
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,16 +25,34 @@ public class View0 extends JPanel {
     private JTextArea viewSolution;
     private JButton solve;
     private JLabel viewImg;
+    private JButton clipboard;
 
     public View0(){
         add(bottom);
+        viewImg.setBorder(new EtchedBorder(EtchedBorder.RAISED));
+        viewSolution.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        viewSolution.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED), new BevelBorder(BevelBorder.LOWERED)));
+        solve.setCursor(new Cursor(Cursor.HAND_CURSOR));
         solve.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resoldre();
             }
         });
+        clipboard.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        clipboard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                portaRetalls(viewSolution.getText());
+            }
+        });
 
+    }
+
+    private void portaRetalls(String text){
+        StringSelection copiar = new StringSelection(text);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(copiar, null);
     }
 
     public JLabel getViewImg(){
@@ -39,6 +64,7 @@ public class View0 extends JPanel {
 
         String solucio = calculateResult(equacio);//solucio
         if (!solucio.equals("error")) viewSolution.setText(equacio + "  =>  " + solucio);
+        else viewSolution.setText("NON equation recognized!");
     }
 
     public String calculateResult(String input) {
